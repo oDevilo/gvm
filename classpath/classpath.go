@@ -58,6 +58,7 @@ func (self *Classpath) parseUserClasspath(cpOption string) {
 	self.userClasspath = newEntry(cpOption)
 }
 
+// 根据类名 从 启动/扩展/用户 区域读取类的二进制信息
 func (self *Classpath) ReadClass(className string) ([]byte, Entry, error) {
 	className = className + ".class"
 	if data, entry, err := self.bootClasspath.readClass(className); err == nil {

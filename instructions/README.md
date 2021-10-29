@@ -1,0 +1,10 @@
+数据类型|例子
+----|-----
+reference|aload/astore/areturn
+byte/boolean|bipush/baload
+char|caload/castore
+double|dload/dstore/dadd
+float|fload/fstore/fadd
+int|iload/istore/iadd
+long|load/lstore/ladd
+short|sipush/sastore

@@ -28,7 +28,7 @@ func Parse(classData []byte) (cf *ClassFile, err error) {
 	}()
 	cr := &ClassReader{classData}
 	cf = &ClassFile{}
-	cf.read(cr)
+	cf.read(cr) // 解析二进制 生成classfile
 	return
 }
 
@@ -134,3 +134,13 @@ func (self *ClassFile) readAndCheckVersion(reader *ClassReader) {
 // 类访问标志之后是两个u2类型的常量池索引 分别给出类名和超类名
 
 // 类和超类索引后面是接口索引表 表中存放的也是常量池索引，给出该类实现的所有接口的名字
+
+func (self *ClassFile) SourceFileAttribute() *SourceFileAttribute {
+	for _, attrInfo := range self.attributes {
+		switch attrInfo.(type) {
+		case *SourceFileAttribute:
+			return attrInfo.(*SourceFileAttribute)
+		}
+	}
+	return nil
+}

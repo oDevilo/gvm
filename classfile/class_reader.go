@@ -2,6 +2,7 @@ package classfile
 
 import "encoding/binary"
 
+// 用于从class二进制中读取对应数据
 type ClassReader struct {
 	data []byte // 存储class文件二进制数据
 }
